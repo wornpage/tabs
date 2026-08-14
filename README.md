@@ -7,15 +7,11 @@ and touch-safe targets.
 <!-- wornpage-delivery:v2 browser-bundle -->
 ## Delivery
 
-`src/` is the canonical implementation and the Svelte consumer entry. `dist/`
-is a generated browser bundle; run `bun run build` after source changes and
-never edit `dist/` directly.
+`src/` is the canonical implementation and the Svelte consumer entry. `dist/` is a generated browser bundle; run `bun run build` after source changes and never edit `dist/` directly.
 
-Repository text is checked out as LF through `.gitattributes`, so generated
-output is byte-stable across Windows and Linux.
+Repository text is checked out as LF through `.gitattributes`, so generated output is byte-stable across Windows and Linux.
 
-The shared [component delivery contract](https://github.com/wornpage/cli/blob/master/docs/component-delivery.md)
-checks this declaration, package exports, packed files, and generated output.
+The shared [component delivery contract](https://github.com/wornpage/cli/blob/master/docs/component-delivery.md) checks this declaration, package exports, packed files, and generated output on every push and pull request.
 <!-- /wornpage-delivery -->
 
 ## Install
