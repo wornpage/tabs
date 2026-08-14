@@ -30,10 +30,14 @@ bun add @wornpage/tabs
 </script>
 
 <Tabs id="project" label="Project sections" {tabs} bind:active />
-{@const ids = tabDomIds('project', active)}
-<section id={ids.panelId} role="tabpanel" aria-labelledby={ids.tabId}>
-  Current panel content
-</section>
+{#each tabs as tab (tab.id)}
+  {@const ids = tabDomIds('project', tab.id)}
+  <section id={ids.panelId} role="tabpanel" aria-labelledby={ids.tabId} hidden={tab.id !== active}>
+    {#if tab.id === active}
+      Current panel content
+    {/if}
+  </section>
+{/each}
 ```
 
 `id` and `label` are optional for backward compatibility. Supply both whenever
