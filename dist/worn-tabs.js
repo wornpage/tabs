@@ -2038,9 +2038,9 @@ function Rr(e, t) {
 }
 //#endregion
 //#region src/Tabs.svelte
-var zr = /* @__PURE__ */ rr("<button type=\"button\" class=\"worn-tab svelte-rc9auj\" role=\"tab\"> </button>"), Br = /* @__PURE__ */ rr("<div class=\"worn-tabs svelte-rc9auj\" role=\"tablist\" aria-orientation=\"horizontal\"></div>"), Vr = {
+var zr = /* @__PURE__ */ rr("<button type=\"button\" class=\"worn-tab svelte-rc9auj\" role=\"tab\"><span class=\"worn-tab-label svelte-rc9auj\"> </span></button>"), Br = /* @__PURE__ */ rr("<div class=\"worn-tabs svelte-rc9auj\" role=\"tablist\" aria-orientation=\"horizontal\"></div>"), Vr = {
 	hash: "svelte-rc9auj",
-	code: ".worn-tabs.svelte-rc9auj {display:flex;max-inline-size:100%;min-inline-size:0;gap:0;border-block-end:2px solid var(--cockpit-border);margin-block-end:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-padding-inline:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}.worn-tabs.svelte-rc9auj::-webkit-scrollbar {display:none;}.worn-tab.svelte-rc9auj {flex:0 0 auto;min-block-size:44px;padding:8px 16px;border:0;border-block-end:2px solid transparent;margin-block-end:-2px;font-family:var(--font-typewriter);font-size:13px;font-weight:560;white-space:nowrap;background:transparent;color:var(--cockpit-text-muted);cursor:pointer;touch-action:manipulation;transition:color 0.12s ease, border-color 0.12s ease;}.worn-tab.svelte-rc9auj:hover {color:var(--cockpit-text);}.worn-tab[aria-selected='true'].svelte-rc9auj {color:var(--cockpit-link);border-block-end-color:var(--cockpit-accent);}.worn-tab.svelte-rc9auj:focus-visible {outline:2px dashed var(--cockpit-accent);outline-offset:-2px;}\n\n	@media (prefers-reduced-motion: reduce) {.worn-tab.svelte-rc9auj {transition:none;}\n	}"
+	code: ".worn-tabs.svelte-rc9auj {display:flex;max-inline-size:100%;min-inline-size:0;gap:0;border-block-end:2px solid var(--cockpit-border);margin-block-end:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-padding-inline:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}.worn-tabs.svelte-rc9auj::-webkit-scrollbar {display:none;}.worn-tab.svelte-rc9auj {box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;max-inline-size:24ch;min-inline-size:0;min-block-size:44px;padding:8px 16px;border:0;border-block-end:2px solid transparent;margin-block-end:-2px;font-family:var(--font-typewriter);font-size:13px;font-weight:560;white-space:nowrap;background:transparent;color:var(--cockpit-text-muted);cursor:pointer;touch-action:manipulation;transition:color 0.12s ease, border-color 0.12s ease;}.worn-tab-label.svelte-rc9auj {min-inline-size:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.worn-tab.svelte-rc9auj:hover {color:var(--cockpit-text);}.worn-tab[aria-selected='true'].svelte-rc9auj {color:var(--cockpit-link);border-block-end-color:var(--cockpit-accent);}.worn-tab.svelte-rc9auj:focus-visible {outline:2px dashed var(--cockpit-accent);outline-offset:-2px;}\n\n	@media (prefers-reduced-motion: reduce) {.worn-tab.svelte-rc9auj {transition:none;}\n	}"
 };
 function Hr(e, t) {
 	He(t, !0), Sr(e, Vr);
@@ -2072,9 +2072,9 @@ function Hr(e, t) {
 	var s = Br();
 	_r(s, 23, () => t.tabs, (e) => e.id, (e, t, r) => {
 		let s = /* @__PURE__ */ pt(() => i(Q(t)));
-		var c = zr(), l = Qt(c, !0);
-		Pe(c), hn(() => {
-			Er(c, "id", Q(s).tabId), Er(c, "aria-controls", Q(s).panelId), Er(c, "aria-selected", Q(t).id === n()), Er(c, "tabindex", Q(t).id === n() ? 0 : -1), sr(l, Q(t).label);
+		var c = zr(), l = Qt(c), u = Qt(l, !0);
+		Pe(l), Pe(c), hn(() => {
+			Er(c, "id", Q(s).tabId), Er(c, "aria-controls", Q(s).panelId), Er(c, "aria-selected", Q(t).id === n()), Er(c, "tabindex", Q(t).id === n() ? 0 : -1), sr(u, Q(t).label);
 		}), Yn("click", c, () => a(Q(t).id)), Yn("keydown", c, (e) => o(e, Q(r))), ir(e, c);
 	}), Pe(s), hn(() => Er(s, "aria-label", r())), ir(e, s), Ue();
 }

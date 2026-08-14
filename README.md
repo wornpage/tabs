@@ -1,7 +1,8 @@
 # @wornpage/tabs
 
 Svelte 5 tabs with named tablists, roving keyboard selection, stable tab-panel
-relationships, compact horizontal overflow, visible focus, and touch-safe targets.
+relationships, bounded long labels, compact horizontal overflow, visible focus,
+and touch-safe targets.
 
 <!-- wornpage-delivery:v2 browser-bundle -->
 ## Delivery
@@ -41,7 +42,10 @@ bun add @wornpage/tabs
 
 `id` and `label` are optional for backward compatibility. Supply both whenever
 the control switches panels. `tabDomIds()` gives the consumer the exact IDs used
-by the component. Individual options may override `tabId` or `panelId`.
+by the component. Individual options may override `tabId` or `panelId`. Keep one
+matching `tabpanel` element in the DOM for every tab, hiding inactive panels as
+needed. Visual labels are capped with an ellipsis while their full text remains
+the tab's accessible name.
 
 ## Props
 

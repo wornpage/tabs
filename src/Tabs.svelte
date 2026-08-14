@@ -56,7 +56,7 @@
 			tabindex={tab.id === active ? 0 : -1}
 			onclick={() => select(tab.id)}
 			onkeydown={(event) => handleKeydown(event, index)}
-		>{tab.label}</button>
+		><span class="worn-tab-label">{tab.label}</span></button>
 	{/each}
 </div>
 
@@ -80,7 +80,13 @@
 	}
 
 	.worn-tab {
+		box-sizing: border-box;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		flex: 0 0 auto;
+		max-inline-size: 24ch;
+		min-inline-size: 0;
 		min-block-size: 44px;
 		padding: 8px 16px;
 		border: 0;
@@ -95,6 +101,13 @@
 		cursor: pointer;
 		touch-action: manipulation;
 		transition: color 0.12s ease, border-color 0.12s ease;
+	}
+
+	.worn-tab-label {
+		min-inline-size: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
 	.worn-tab:hover {

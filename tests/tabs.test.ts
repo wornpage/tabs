@@ -47,6 +47,15 @@ describe('keyboard and compact behavior', () => {
 		expect(source).toContain('touch-action: manipulation;');
 	});
 
+	test('bounds hostile labels without changing their accessible text', () => {
+		expect(source).toContain('<span class="worn-tab-label">{tab.label}</span>');
+		expect(source).toContain('max-inline-size: 24ch;');
+		expect(source).toContain('.worn-tab-label {');
+		expect(source).toContain('overflow: hidden;');
+		expect(source).toContain('text-overflow: ellipsis;');
+		expect(source).toContain('white-space: nowrap;');
+	});
+
 	test('honors reduced-motion preferences', () => {
 		expect(source).toContain('@media (prefers-reduced-motion: reduce)');
 		expect(source).toContain('transition: none;');
