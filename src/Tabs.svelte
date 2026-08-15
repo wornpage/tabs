@@ -69,13 +69,7 @@
 		event.preventDefault();
 		select(tabs[target].id);
 		const targetButton = (event.currentTarget as HTMLButtonElement).parentElement?.children.item(target);
-		if (targetButton instanceof HTMLElement) targetButton.focus({ preventScroll: true });
-	}
-
-	function handleKeyup(event: KeyboardEvent) {
-		if (event.key === 'ArrowRight' || event.key === 'ArrowLeft' || event.key === 'Home' || event.key === 'End') {
-			event.preventDefault();
-		}
+		if (targetButton instanceof HTMLElement) targetButton.focus();
 	}
 </script>
 
@@ -92,7 +86,6 @@
 			tabindex={tab.id === active ? 0 : -1}
 			onclick={() => select(tab.id)}
 			onkeydown={(event) => handleKeydown(event, index)}
-			onkeyup={handleKeyup}
 		><span class="worn-tab-label">{tab.label}</span></button>
 	{/each}
 </div>

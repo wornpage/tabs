@@ -36,15 +36,7 @@ describe('keyboard and compact behavior', () => {
 		expect(source).toContain("event.key === 'ArrowLeft'");
 		expect(source).toContain("event.key === 'Home'");
 		expect(source).toContain("event.key === 'End'");
-		expect(source).toContain('targetButton.focus({ preventScroll: true });');
-	});
-
-	test('keeps roving focus from moving the outer page', () => {
-		expect(source).toContain('targetButton.focus({ preventScroll: true });');
-		expect(source).toContain("event.key === 'ArrowRight' || event.key === 'ArrowLeft' || event.key === 'Home' || event.key === 'End'");
-		expect(source).toContain('onkeyup={handleKeyup}');
-		expect(source).toContain('requestAnimationFrame(ensureActiveTabVisible)');
-		expect(source).not.toContain('scrollIntoView');
+		expect(source).toContain('targetButton.focus();');
 	});
 
 	test('owns containment, touch targets, and horizontal overflow', () => {

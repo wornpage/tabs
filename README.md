@@ -47,8 +47,7 @@ matching `tabpanel` element in the DOM for every tab, hiding inactive panels as
 needed. Visual labels are capped with an ellipsis while their full text remains
 the tab's accessible name. When `active` is set externally, including from a
 deep link, the selected tab is brought fully into the strip without scrolling
-the page. Arrow, Home, and End navigation likewise keeps both key phases and
-focus movement inside the tab strip instead of moving the outer document.
+the page.
 
 ## Props
 
