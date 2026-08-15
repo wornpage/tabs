@@ -41,6 +41,8 @@ describe('keyboard and compact behavior', () => {
 
 	test('keeps roving focus from moving the outer page', () => {
 		expect(source).toContain('targetButton.focus({ preventScroll: true });');
+		expect(source).toContain("event.key === 'ArrowRight' || event.key === 'ArrowLeft' || event.key === 'Home' || event.key === 'End'");
+		expect(source).toContain('onkeyup={handleKeyup}');
 		expect(source).toContain('requestAnimationFrame(ensureActiveTabVisible)');
 		expect(source).not.toContain('scrollIntoView');
 	});

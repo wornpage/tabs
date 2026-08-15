@@ -2121,16 +2121,23 @@ function Gr(e, t) {
 		let i = e.currentTarget.parentElement?.children.item(r);
 		i instanceof HTMLElement && i.focus({ preventScroll: !0 });
 	}
-	var l = Ur();
-	_r(l, 23, () => t.tabs, (e) => e.id, (e, t, r) => {
+	function l(e) {
+		(e.key === "ArrowRight" || e.key === "ArrowLeft" || e.key === "Home" || e.key === "End") && e.preventDefault();
+	}
+	var u = Ur();
+	_r(u, 23, () => t.tabs, (e) => e.id, (e, t, r) => {
 		let i = /* @__PURE__ */ pt(() => o(Q(t)));
-		var a = Hr(), l = Qt(a), u = Qt(l, !0);
-		Pe(l), Pe(a), hn(() => {
-			Er(a, "id", Q(i).tabId), Er(a, "aria-controls", Q(i).panelId), Er(a, "aria-selected", Q(t).id === n()), Er(a, "tabindex", Q(t).id === n() ? 0 : -1), sr(u, Q(t).label);
-		}), Yn("click", a, () => s(Q(t).id)), Yn("keydown", a, (e) => c(e, Q(r))), ir(e, a);
-	}), Pe(l), jr(l, (e) => i = e, () => i), hn(() => Er(l, "aria-label", r())), ir(e, l), Ue();
+		var a = Hr(), u = Qt(a), d = Qt(u, !0);
+		Pe(u), Pe(a), hn(() => {
+			Er(a, "id", Q(i).tabId), Er(a, "aria-controls", Q(i).panelId), Er(a, "aria-selected", Q(t).id === n()), Er(a, "tabindex", Q(t).id === n() ? 0 : -1), sr(d, Q(t).label);
+		}), Yn("click", a, () => s(Q(t).id)), Yn("keydown", a, (e) => c(e, Q(r))), Yn("keyup", a, l), ir(e, a);
+	}), Pe(u), jr(u, (e) => i = e, () => i), hn(() => Er(u, "aria-label", r())), ir(e, u), Ue();
 }
-Xn(["click", "keydown"]);
+Xn([
+	"click",
+	"keydown",
+	"keyup"
+]);
 //#endregion
 //#region src/TabsElement.svelte
 function Kr(e, t) {
