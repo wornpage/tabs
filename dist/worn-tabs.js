@@ -1791,8 +1791,33 @@ function kr(e) {
 	return n;
 }
 //#endregion
+//#region node_modules/svelte/src/internal/client/dom/elements/bindings/this.js
+function Ar(e, t) {
+	return e === t || e?.[le] === t;
+}
+function jr(e = {}, t, n, r) {
+	var i = O.r, a = K;
+	return fn(() => {
+		var o, s;
+		return mn(() => {
+			o = s, s = r?.() || [], Gn(() => {
+				Ar(n(...s), e) || (t(e, ...s), o && Ar(n(...o), e) && t(null, ...o));
+			});
+		}), () => {
+			let r = a;
+			for (; r !== i && r.parent !== null && r.parent.f & 33554432;) r = r.parent;
+			let o = () => {
+				s && Ar(n(...s), e) && t(null, ...s);
+			}, c = r.teardown;
+			r.teardown = () => {
+				o(), c?.();
+			};
+		};
+	}), e;
+}
+//#endregion
 //#region node_modules/svelte/src/internal/client/reactivity/props.js
-function Ar(e, t, n, r) {
+function Mr(e, t, n, r) {
 	var i = !0, a = !!(n & 8), o = !!(n & 16), s = r, c = !0, u = void 0, d = () => o && i ? (u ??= /* @__PURE__ */ ut(r), Q(u)) : (c && (c = !1, s = o ? Gn(r) : r), s);
 	let f;
 	if (a) {
@@ -1828,10 +1853,10 @@ function Ar(e, t, n, r) {
 }
 //#endregion
 //#region node_modules/svelte/src/legacy/legacy-client.js
-function jr(e) {
-	return new Mr(e);
+function Nr(e) {
+	return new Pr(e);
 }
-var Mr = class {
+var Pr = class {
 	#e;
 	#t;
 	constructor(e) {
@@ -1890,8 +1915,8 @@ var Mr = class {
 	$destroy() {
 		this.#t.$destroy();
 	}
-}, Nr;
-typeof HTMLElement == "function" && (Nr = class extends HTMLElement {
+}, Fr;
+typeof HTMLElement == "function" && (Fr = class extends HTMLElement {
 	$$ctor;
 	$$s;
 	$$c;
@@ -1928,14 +1953,14 @@ typeof HTMLElement == "function" && (Nr = class extends HTMLElement {
 					e !== "default" && (n.name = e), ir(t, n);
 				};
 			}
-			let t = {}, n = Fr(this);
+			let t = {}, n = Lr(this);
 			for (let r of this.$$s) r in n && (r === "default" && !this.$$d.children ? (this.$$d.children = e(r), t.default = !0) : t[r] = e(r));
 			for (let e of this.attributes) {
 				let t = this.$$g_p(e.name);
-				t in this.$$d || (this.$$d[t] = Pr(t, e.value, this.$$p_d, "toProp"));
+				t in this.$$d || (this.$$d[t] = Ir(t, e.value, this.$$p_d, "toProp"));
 			}
 			for (let e in this.$$p_d) !(e in this.$$d) && this[e] !== void 0 && (this.$$d[e] = this[e], delete this[e]);
-			this.$$c = jr({
+			this.$$c = Nr({
 				component: this.$$ctor,
 				target: this.$$shadowRoot || this,
 				props: {
@@ -1949,7 +1974,7 @@ typeof HTMLElement == "function" && (Nr = class extends HTMLElement {
 					for (let e of s(this.$$c)) {
 						if (!this.$$p_d[e]?.reflect) continue;
 						this.$$d[e] = this.$$c[e];
-						let t = Pr(e, this.$$d[e], this.$$p_d, "toAttribute");
+						let t = Ir(e, this.$$d[e], this.$$p_d, "toAttribute");
 						t == null ? this.removeAttribute(this.$$p_d[e].attribute || e) : this.setAttribute(this.$$p_d[e].attribute || e, t);
 					}
 					this.$$r = !1;
@@ -1963,7 +1988,7 @@ typeof HTMLElement == "function" && (Nr = class extends HTMLElement {
 		}
 	}
 	attributeChangedCallback(e, t, n) {
-		this.$$r || (e = this.$$g_p(e), this.$$d[e] = Pr(e, n, this.$$p_d, "toProp"), this.$$c?.$set({ [e]: this.$$d[e] }));
+		this.$$r || (e = this.$$g_p(e), this.$$d[e] = Ir(e, n, this.$$p_d, "toProp"), this.$$c?.$set({ [e]: this.$$d[e] }));
 	}
 	disconnectedCallback() {
 		this.$$cn = !1, Promise.resolve().then(() => {
@@ -1974,7 +1999,7 @@ typeof HTMLElement == "function" && (Nr = class extends HTMLElement {
 		return s(this.$$p_d).find((t) => this.$$p_d[t].attribute === e || !this.$$p_d[t].attribute && t.toLowerCase() === e) || e;
 	}
 });
-function Pr(e, t, n, r) {
+function Ir(e, t, n, r) {
 	let i = n[e]?.type;
 	if (t = i === "Boolean" && typeof t != "boolean" ? t != null : t, !r || !n[e]) return t;
 	if (r === "toAttribute") switch (i) {
@@ -1992,14 +2017,14 @@ function Pr(e, t, n, r) {
 		default: return t;
 	}
 }
-function Fr(e) {
+function Lr(e) {
 	let t = {};
 	return e.childNodes.forEach((e) => {
 		t[e.slot || "default"] = !0;
 	}), t;
 }
-function Ir(e, t, n, r, i, a) {
-	let o = class extends Nr {
+function Rr(e, t, n, r, i, a) {
+	let o = class extends Fr {
 		constructor() {
 			super(e, n, i), this.$$p_d = t;
 		}
@@ -2013,7 +2038,7 @@ function Ir(e, t, n, r, i, a) {
 				return this.$$c && e in this.$$c ? this.$$c[e] : this.$$d[e];
 			},
 			set(n) {
-				n = Pr(e, n, t), this.$$d[e] = n;
+				n = Ir(e, n, t), this.$$d[e] = n;
 				var r = this.$$c;
 				r && (l(r, e)?.get ? r[e] = n : r.$set({ [e]: n }));
 			}
@@ -2026,71 +2051,98 @@ function Ir(e, t, n, r, i, a) {
 }
 //#endregion
 //#region src/ids.ts
-function Lr(e) {
+function zr(e) {
 	return e.trim().replace(/[^a-zA-Z0-9_-]+/gu, "-").replace(/^-+|-+$/gu, "") || "tab";
 }
-function Rr(e, t) {
-	let n = Lr(t);
+function Br(e, t) {
+	let n = zr(t);
 	return {
 		tabId: `${e}-tab-${n}`,
 		panelId: `${e}-panel-${n}`
 	};
 }
 //#endregion
+//#region src/scroll.ts
+function Vr({ scrollLeft: e, clientWidth: t, scrollWidth: n, itemLeft: r, itemRight: i, padding: a = 8 }) {
+	let o = e;
+	return r < a ? o += r - a : i > t - a && (o += i - (t - a)), Math.max(0, Math.min(Math.max(0, n - t), o));
+}
+//#endregion
 //#region src/Tabs.svelte
-var zr = /* @__PURE__ */ rr("<button type=\"button\" class=\"worn-tab svelte-rc9auj\" role=\"tab\"><span class=\"worn-tab-label svelte-rc9auj\"> </span></button>"), Br = /* @__PURE__ */ rr("<div class=\"worn-tabs svelte-rc9auj\" role=\"tablist\" aria-orientation=\"horizontal\"></div>"), Vr = {
+var Hr = /* @__PURE__ */ rr("<button type=\"button\" class=\"worn-tab svelte-rc9auj\" role=\"tab\"><span class=\"worn-tab-label svelte-rc9auj\"> </span></button>"), Ur = /* @__PURE__ */ rr("<div class=\"worn-tabs svelte-rc9auj\" role=\"tablist\" aria-orientation=\"horizontal\"></div>"), Wr = {
 	hash: "svelte-rc9auj",
 	code: ".worn-tabs.svelte-rc9auj {display:flex;max-inline-size:100%;min-inline-size:0;gap:0;border-block-end:2px solid var(--cockpit-border);margin-block-end:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-padding-inline:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}.worn-tabs.svelte-rc9auj::-webkit-scrollbar {display:none;}.worn-tab.svelte-rc9auj {box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;max-inline-size:24ch;min-inline-size:0;min-block-size:44px;padding:8px 16px;border:0;border-block-end:2px solid transparent;margin-block-end:-2px;font-family:var(--font-typewriter);font-size:13px;font-weight:560;white-space:nowrap;background:transparent;color:var(--cockpit-text-muted);cursor:pointer;touch-action:manipulation;transition:color 0.12s ease, border-color 0.12s ease;}.worn-tab-label.svelte-rc9auj {min-inline-size:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.worn-tab.svelte-rc9auj:hover {color:var(--cockpit-text);}.worn-tab[aria-selected='true'].svelte-rc9auj {color:var(--cockpit-link);border-block-end-color:var(--cockpit-accent);}.worn-tab.svelte-rc9auj:focus-visible {outline:2px dashed var(--cockpit-accent);outline-offset:-2px;}\n\n	@media (prefers-reduced-motion: reduce) {.worn-tab.svelte-rc9auj {transition:none;}\n	}"
 };
-function Hr(e, t) {
-	He(t, !0), Sr(e, Vr);
-	let n = Ar(t, "active", 15, ""), r = Ar(t, "label", 3, "Sections");
+function Gr(e, t) {
+	He(t, !0), Sr(e, Wr);
+	let n = Mr(t, "active", 15, ""), r = Mr(t, "label", 3, "Sections"), i;
 	cn(() => {
 		t.tabs.length && !t.tabs.some((e) => e.id === n()) && n(t.tabs[0].id);
+	}), cn(() => {
+		let e = n(), r = t.tabs.length;
+		if (!e || !r) return;
+		let i = requestAnimationFrame(a);
+		return () => cancelAnimationFrame(i);
 	});
-	function i(e) {
+	function a() {
+		if (!i) return;
+		let e = i.querySelector("[role=\"tab\"][aria-selected=\"true\"]");
+		if (!e) return;
+		let t = i.getBoundingClientRect(), n = e.getBoundingClientRect(), r = Vr({
+			scrollLeft: i.scrollLeft,
+			clientWidth: i.clientWidth,
+			scrollWidth: i.scrollWidth,
+			itemLeft: n.left - t.left,
+			itemRight: n.right - t.left
+		});
+		Math.abs(r - i.scrollLeft) > .5 && i.scrollTo({
+			left: r,
+			behavior: "auto"
+		});
+	}
+	function o(e) {
 		if (!t.id) return {
 			tabId: e.tabId,
 			panelId: e.panelId
 		};
-		let n = Rr(t.id, e.id);
+		let n = Br(t.id, e.id);
 		return {
 			tabId: e.tabId || n.tabId,
 			panelId: e.panelId || n.panelId
 		};
 	}
-	function a(e) {
+	function s(e) {
 		n(e), t.onchange?.(e);
 	}
-	function o(e, n) {
+	function c(e, n) {
 		let r = -1;
 		if (e.key === "ArrowRight" ? r = (n + 1) % t.tabs.length : e.key === "ArrowLeft" ? r = (n - 1 + t.tabs.length) % t.tabs.length : e.key === "Home" ? r = 0 : e.key === "End" && (r = t.tabs.length - 1), r < 0) return;
-		e.preventDefault(), a(t.tabs[r].id);
+		e.preventDefault(), s(t.tabs[r].id);
 		let i = e.currentTarget.parentElement?.children.item(r);
 		i instanceof HTMLElement && i.focus();
 	}
-	var s = Br();
-	_r(s, 23, () => t.tabs, (e) => e.id, (e, t, r) => {
-		let s = /* @__PURE__ */ pt(() => i(Q(t)));
-		var c = zr(), l = Qt(c), u = Qt(l, !0);
-		Pe(l), Pe(c), hn(() => {
-			Er(c, "id", Q(s).tabId), Er(c, "aria-controls", Q(s).panelId), Er(c, "aria-selected", Q(t).id === n()), Er(c, "tabindex", Q(t).id === n() ? 0 : -1), sr(u, Q(t).label);
-		}), Yn("click", c, () => a(Q(t).id)), Yn("keydown", c, (e) => o(e, Q(r))), ir(e, c);
-	}), Pe(s), hn(() => Er(s, "aria-label", r())), ir(e, s), Ue();
+	var l = Ur();
+	_r(l, 23, () => t.tabs, (e) => e.id, (e, t, r) => {
+		let i = /* @__PURE__ */ pt(() => o(Q(t)));
+		var a = Hr(), l = Qt(a), u = Qt(l, !0);
+		Pe(l), Pe(a), hn(() => {
+			Er(a, "id", Q(i).tabId), Er(a, "aria-controls", Q(i).panelId), Er(a, "aria-selected", Q(t).id === n()), Er(a, "tabindex", Q(t).id === n() ? 0 : -1), sr(u, Q(t).label);
+		}), Yn("click", a, () => s(Q(t).id)), Yn("keydown", a, (e) => c(e, Q(r))), ir(e, a);
+	}), Pe(l), jr(l, (e) => i = e, () => i), hn(() => Er(l, "aria-label", r())), ir(e, l), Ue();
 }
 Xn(["click", "keydown"]);
 //#endregion
 //#region src/TabsElement.svelte
-function Ur(e, t) {
+function Kr(e, t) {
 	He(t, !0);
-	let n = Ar(t, "active", 15, ""), r = Ar(t, "tabs", 23, () => []), i = Ar(t, "controlId", 7), a = Ar(t, "label", 7, "Sections"), o = t.$$host;
+	let n = Mr(t, "active", 15, ""), r = Mr(t, "tabs", 23, () => []), i = Mr(t, "controlId", 7), a = Mr(t, "label", 7, "Sections"), o = t.$$host;
 	function s(e) {
 		n(e), o.dispatchEvent(new CustomEvent("change", {
 			detail: { id: e },
 			bubbles: !0
 		}));
 	}
-	return Hr(e, {
+	return Gr(e, {
 		get tabs() {
 			return r();
 		},
@@ -2134,11 +2186,11 @@ function Ur(e, t) {
 		}
 	});
 }
-customElements.define("worn-tabs", Ir(Ur, {
+customElements.define("worn-tabs", Rr(Kr, {
 	active: {},
 	tabs: {},
 	controlId: { attribute: "control-id" },
 	label: {}
 }, [], []));
 //#endregion
-export { Ur as default };
+export { Kr as default };

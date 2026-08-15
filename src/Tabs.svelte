@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { tabDomIds } from './ids.js';
+	import { visibleScrollLeft } from './scroll.js';
 	import type { TabOption, TabsProps } from './types.js';
 
 	let {
@@ -9,10 +10,39 @@
 		id,
 		label = 'Sections',
 	}: TabsProps = $props();
+	let tablist: HTMLDivElement | undefined;
 
 	$effect(() => {
 		if (tabs.length && !tabs.some((tab) => tab.id === active)) active = tabs[0].id;
 	});
+
+	$effect(() => {
+		const selectedId = active;
+		const tabCount = tabs.length;
+		if (!selectedId || !tabCount) return;
+
+		const frame = requestAnimationFrame(ensureActiveTabVisible);
+		return () => cancelAnimationFrame(frame);
+	});
+
+	function ensureActiveTabVisible() {
+		if (!tablist) return;
+		const selected = tablist.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]');
+		if (!selected) return;
+
+		const listBounds = tablist.getBoundingClientRect();
+		const tabBounds = selected.getBoundingClientRect();
+		const nextLeft = visibleScrollLeft({
+			scrollLeft: tablist.scrollLeft,
+			clientWidth: tablist.clientWidth,
+			scrollWidth: tablist.scrollWidth,
+			itemLeft: tabBounds.left - listBounds.left,
+			itemRight: tabBounds.right - listBounds.left,
+		});
+		if (Math.abs(nextLeft - tablist.scrollLeft) > 0.5) {
+			tablist.scrollTo({ left: nextLeft, behavior: 'auto' });
+		}
+	}
 
 	function idsFor(tab: TabOption) {
 		if (!id) return { tabId: tab.tabId, panelId: tab.panelId };
@@ -43,7 +73,7 @@
 	}
 </script>
 
-<div class="worn-tabs" role="tablist" aria-label={label} aria-orientation="horizontal">
+<div bind:this={tablist} class="worn-tabs" role="tablist" aria-label={label} aria-orientation="horizontal">
 	{#each tabs as tab, index (tab.id)}
 		{@const domIds = idsFor(tab)}
 		<button

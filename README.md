@@ -45,7 +45,9 @@ the control switches panels. `tabDomIds()` gives the consumer the exact IDs used
 by the component. Individual options may override `tabId` or `panelId`. Keep one
 matching `tabpanel` element in the DOM for every tab, hiding inactive panels as
 needed. Visual labels are capped with an ellipsis while their full text remains
-the tab's accessible name.
+the tab's accessible name. When `active` is set externally, including from a
+deep link, the selected tab is brought fully into the strip without scrolling
+the page.
 
 ## Props
 

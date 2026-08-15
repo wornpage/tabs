@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import { readFileSync } from 'node:fs';
 import { tabDomIds } from '../src/ids.js';
+import { visibleScrollLeft } from '../src/scroll.js';
 
 const source = readFileSync(new URL('../src/Tabs.svelte', import.meta.url), 'utf8').replace(/\r\n/gu, '\n');
 const elementSource = readFileSync(new URL('../src/TabsElement.svelte', import.meta.url), 'utf8').replace(/\r\n/gu, '\n');
@@ -45,6 +46,26 @@ describe('keyboard and compact behavior', () => {
 		expect(source).toContain('overscroll-behavior-inline: contain;');
 		expect(source).toContain('min-block-size: 44px;');
 		expect(source).toContain('touch-action: manipulation;');
+	});
+
+	test('keeps externally selected tabs inside the compact viewport', () => {
+		expect(visibleScrollLeft({
+			scrollLeft: 0,
+			clientWidth: 314,
+			scrollWidth: 553,
+			itemLeft: 252,
+			itemRight: 328,
+		})).toBe(22);
+		expect(visibleScrollLeft({
+			scrollLeft: 205,
+			clientWidth: 314,
+			scrollWidth: 519,
+			itemLeft: -205,
+			itemRight: -110,
+		})).toBe(0);
+		expect(source).toContain('requestAnimationFrame(ensureActiveTabVisible)');
+		expect(source).toContain("'[role=\"tab\"][aria-selected=\"true\"]'");
+		expect(source).toContain("tablist.scrollTo({ left: nextLeft, behavior: 'auto' });");
 	});
 
 	test('bounds hostile labels without changing their accessible text', () => {
