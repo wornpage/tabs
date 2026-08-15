@@ -2119,7 +2119,7 @@ function Gr(e, t) {
 		if (e.key === "ArrowRight" ? r = (n + 1) % t.tabs.length : e.key === "ArrowLeft" ? r = (n - 1 + t.tabs.length) % t.tabs.length : e.key === "Home" ? r = 0 : e.key === "End" && (r = t.tabs.length - 1), r < 0) return;
 		e.preventDefault(), s(t.tabs[r].id);
 		let i = e.currentTarget.parentElement?.children.item(r);
-		i instanceof HTMLElement && i.focus();
+		i instanceof HTMLElement && i.focus({ preventScroll: !0 });
 	}
 	var l = Ur();
 	_r(l, 23, () => t.tabs, (e) => e.id, (e, t, r) => {

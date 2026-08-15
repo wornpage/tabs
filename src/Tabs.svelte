@@ -69,7 +69,7 @@
 		event.preventDefault();
 		select(tabs[target].id);
 		const targetButton = (event.currentTarget as HTMLButtonElement).parentElement?.children.item(target);
-		if (targetButton instanceof HTMLElement) targetButton.focus();
+		if (targetButton instanceof HTMLElement) targetButton.focus({ preventScroll: true });
 	}
 </script>
 
