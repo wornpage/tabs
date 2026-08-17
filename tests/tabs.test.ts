@@ -45,6 +45,10 @@ describe('keyboard and compact behavior', () => {
 		expect(source).toContain('overflow-x: auto;');
 		expect(source).toContain('overscroll-behavior-inline: contain;');
 		expect(source).toContain('min-block-size: 44px;');
+	});
+
+	test('keeps tab-button touch manipulation without restricting strip panning', () => {
+		expect(source).toMatch(/\.worn-tab\s*\{[^}]*touch-action: manipulation;/u);
 		expect(source).not.toContain('touch-action: pan-x;');
 	});
 

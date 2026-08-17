@@ -259,6 +259,7 @@
 		background: transparent;
 		color: var(--cockpit-text-muted);
 		cursor: pointer;
+		touch-action: manipulation;
 		transition: color 0.12s ease, border-color 0.12s ease;
 	}
 
