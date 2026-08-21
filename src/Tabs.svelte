@@ -234,10 +234,6 @@
 		transition: color 0.12s ease, background-color 0.12s ease;
 	}
 
-	.worn-tabs-control:hover:not(:disabled) {
-		color: var(--cockpit-text);
-	}
-
 	.worn-tabs-control:disabled {
 		color: var(--cockpit-text-muted);
 		cursor: default;
@@ -281,10 +277,6 @@
 		white-space: nowrap;
 	}
 
-	.worn-tab:hover {
-		color: var(--cockpit-text);
-	}
-
 	.worn-tab[aria-selected='true'] {
 		color: var(--cockpit-link);
 		border-block-end-color: var(--cockpit-accent);
@@ -293,6 +285,16 @@
 	.worn-tab:focus-visible {
 		outline: 2px dashed var(--cockpit-accent);
 		outline-offset: -2px;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.worn-tabs-control:hover:not(:disabled) {
+			color: var(--cockpit-text);
+		}
+
+		.worn-tab:hover {
+			color: var(--cockpit-text);
+		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {

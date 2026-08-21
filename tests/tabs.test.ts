@@ -86,6 +86,10 @@ describe('keyboard and compact behavior', () => {
 		expect(source).toContain('@media (prefers-reduced-motion: reduce)');
 		expect(source).toContain('transition: none;');
 	});
+
+	test('limits hover feedback to hover-capable fine pointers', () => {
+		expect(source).toMatch(/@media \(hover: hover\) and \(pointer: fine\) \{[\s\S]*\.worn-tabs-control:hover:not\(:disabled\)[\s\S]*\.worn-tab:hover[\s\S]*\}/u);
+	});
 });
 
 describe('overflow controls', () => {
