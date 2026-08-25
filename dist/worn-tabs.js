@@ -16,7 +16,7 @@ function _() {
 		reject: t
 	};
 }
-var v = 1024, y = 2048, b = 4096, x = 8192, S = 16384, C = 32768, w = 1 << 25, ee = 65536, te = 1 << 19, ne = 1 << 20, re = 1 << 25, ie = 65536, ae = 1 << 21, oe = 1 << 22, se = 1 << 23, ce = Symbol("$state"), le = Symbol("legacy props"), ue = Symbol(""), de = Symbol("attributes"), fe = Symbol("class"), pe = Symbol("style"), me = Symbol("text"), he = new class extends Error {
+var v = 1024, y = 2048, b = 4096, x = 8192, S = 16384, ee = 32768, C = 1 << 25, te = 65536, w = 1 << 19, ne = 1 << 20, re = 1 << 25, ie = 65536, ae = 1 << 21, oe = 1 << 22, se = 1 << 23, ce = Symbol("$state"), le = Symbol("legacy props"), ue = Symbol(""), de = Symbol("attributes"), fe = Symbol("class"), pe = Symbol("style"), me = Symbol("text"), he = new class extends Error {
 	name = "StaleReactionError";
 	message = "The reaction that called `getAbortSignal()` was re-run or destroyed";
 }(), ge = !!globalThis.document?.contentType && /* @__PURE__ */ globalThis.document.contentType.includes("xml");
@@ -245,7 +245,7 @@ function tt(e) {
 }
 //#endregion
 //#region node_modules/svelte/src/internal/client/dom/blocks/boundary.js
-var nt = ee | te;
+var nt = te | w;
 function rt(e, t, n, r) {
 	new it(e, t, n, r);
 }
@@ -471,7 +471,7 @@ function ct() {
 /*#__NO_SIDE_EFFECTS__*/
 function lt(e) {
 	var n = 2 | y;
-	return q !== null && (q.f |= te), {
+	return q !== null && (q.f |= w), {
 		ctx: k,
 		deps: null,
 		effects: null,
@@ -1125,7 +1125,7 @@ function B(e, t) {
 		} catch (e) {
 			throw H(r), e;
 		}
-		i.deps === null && i.teardown === null && i.nodes === null && i.first === i.last && !(i.f & 524288) && (i = i.first, e & 16 && e & 65536 && i !== null && (i.f |= ee));
+		i.deps === null && i.teardown === null && i.nodes === null && i.first === i.last && !(i.f & 524288) && (i = i.first, e & 16 && e & 65536 && i !== null && (i.f |= te));
 	}
 	if (i !== null && (i.parent = n, n !== null && an(i, n), W !== null && W.f & 2 && !(e & 64))) {
 		var a = W;
@@ -1153,14 +1153,14 @@ function ln(e) {
 }
 function un(e) {
 	Ot.ensure();
-	let t = B(64 | te, e);
+	let t = B(64 | w, e);
 	return () => {
 		H(t);
 	};
 }
 function dn(e) {
 	Ot.ensure();
-	let t = B(64 | te, e);
+	let t = B(64 | w, e);
 	return (e = {}) => new Promise((n) => {
 		e.outro ? Sn(t, () => {
 			H(t), n(void 0);
@@ -1171,7 +1171,7 @@ function fn(e) {
 	return B(4, e);
 }
 function pn(e) {
-	return B(oe | te, e);
+	return B(oe | w, e);
 }
 function mn(e, t = 0) {
 	return B(8 | t, e);
@@ -1187,7 +1187,7 @@ function gn(e, t = 0) {
 	return B(16 | t, e);
 }
 function V(e) {
-	return B(32 | te, e);
+	return B(32 | w, e);
 }
 function _n(e) {
 	var t = e.teardown;
@@ -1220,10 +1220,10 @@ function yn(e) {
 }
 function H(e, t = !0) {
 	var n = !1;
-	(t || e.f & 262144) && e.nodes !== null && e.nodes.end !== null && (bn(e.nodes.start, e.nodes.end), n = !0), e.f |= w, vn(e, t && !n), Vn(e, 0);
+	(t || e.f & 262144) && e.nodes !== null && e.nodes.end !== null && (bn(e.nodes.start, e.nodes.end), n = !0), e.f |= C, vn(e, t && !n), Vn(e, 0);
 	var r = e.nodes && e.nodes.t;
 	if (r !== null) for (let e of r) e.stop();
-	_n(e), e.f ^= w, e.f |= S;
+	_n(e), e.f ^= C, e.f |= S;
 	var i = e.parent;
 	i !== null && i.first !== null && xn(e), e.next = e.prev = e.teardown = e.ctx = e.deps = e.fn = e.nodes = e.ac = e.b = null;
 }
@@ -1339,7 +1339,7 @@ function zn(e) {
 	try {
 		e.f |= ae;
 		var u = e.fn, d = u();
-		e.f |= C;
+		e.f |= ee;
 		var f = e.deps, p = N?.is_fork;
 		if (X !== null) {
 			var m;
@@ -1413,7 +1413,7 @@ function $(e) {
 			var o = i.v;
 			return (!(i.f & 1024) && i.reactions !== null || Wn(i)) && (o = ht(i)), It.set(i, o), o;
 		}
-		var s = !(i.f & 512) && !G && W !== null && (On || !!(W.f & 512)), c = (i.f & C) === 0;
+		var s = !(i.f & 512) && !G && W !== null && (On || !!(W.f & 512)), c = (i.f & ee) === 0;
 		Ln(i) && (s && (i.f |= 512), gt(i)), s && !c && (vt(i), Un(i));
 	}
 	if (P?.has(e)) return P.get(e);
@@ -1694,7 +1694,7 @@ var gr = class {
 function _r(e, t, n = !1) {
 	var r;
 	T && (r = D, Me());
-	var i = new gr(e), a = n ? ee : 0;
+	var i = new gr(e), a = n ? te : 0;
 	function o(e, t) {
 		if (T) {
 			var n = Ie(r);
@@ -1819,10 +1819,10 @@ function Cr(e, t, n, r, i) {
 				if (p.length < m.length) {
 					var b = m[0], x;
 					d = b.prev;
-					var S = p[0], C = p[p.length - 1];
+					var S = p[0], ee = p[p.length - 1];
 					for (x = 0; x < p.length; x += 1) Tr(p[x], b, n);
 					for (x = 0; x < m.length; x += 1) u.delete(m[x]);
-					Er(e, S.prev, C.next), Er(e, d, S), Er(e, C, b), l = b, d = C, --v, p = [], m = [];
+					Er(e, S.prev, ee.next), Er(e, d, S), Er(e, ee, b), l = b, d = ee, --v, p = [], m = [];
 				} else u.delete(_), Tr(_, l, n), Er(e, _.prev, _.next), Er(e, _, d === null ? e.effect.first : d.next), Er(e, d, _), d = _;
 				continue;
 			}
@@ -1836,17 +1836,17 @@ function Cr(e, t, n, r, i) {
 		e.outrogroups.size === 0 && (e.outrogroups = null);
 	}
 	if (l !== null || u !== void 0) {
-		var w = [];
-		if (u !== void 0) for (_ of u) _.f & 8192 || w.push(_);
-		for (; l !== null;) !(l.f & 8192) && l !== e.fallback && w.push(l), l = Sr(l.next);
-		var ee = w.length;
-		if (ee > 0) {
-			var te = r & 4 && s === 0 ? n : null;
+		var C = [];
+		if (u !== void 0) for (_ of u) _.f & 8192 || C.push(_);
+		for (; l !== null;) !(l.f & 8192) && l !== e.fallback && C.push(l), l = Sr(l.next);
+		var te = C.length;
+		if (te > 0) {
+			var w = r & 4 && s === 0 ? n : null;
 			if (a) {
-				for (v = 0; v < ee; v += 1) w[v].nodes?.a?.measure();
-				for (v = 0; v < ee; v += 1) w[v].nodes?.a?.fix();
+				for (v = 0; v < te; v += 1) C[v].nodes?.a?.measure();
+				for (v = 0; v < te; v += 1) C[v].nodes?.a?.fix();
 			}
-			vr(e, w, te);
+			vr(e, C, w);
 		}
 	}
 	a && A(() => {
@@ -2193,7 +2193,7 @@ function qr({ scrollLeft: e, clientWidth: t, scrollWidth: n, direction: r }) {
 //#region src/Tabs.svelte
 var Jr = /* @__PURE__ */ ar("<button type=\"button\" class=\"worn-tabs-control svelte-rc9auj\" aria-label=\"Scroll to previous tabs\"><span aria-hidden=\"true\">&lsaquo;</span></button>"), Yr = /* @__PURE__ */ ar("<button type=\"button\" class=\"worn-tab svelte-rc9auj\" role=\"tab\"><span class=\"worn-tab-label svelte-rc9auj\"> </span></button>"), Xr = /* @__PURE__ */ ar("<button type=\"button\" class=\"worn-tabs-control svelte-rc9auj\" aria-label=\"Scroll to next tabs\"><span aria-hidden=\"true\">&rsaquo;</span></button>"), Zr = /* @__PURE__ */ ar("<div class=\"worn-tabs-shell svelte-rc9auj\"><!> <div class=\"worn-tabs svelte-rc9auj\" role=\"tablist\" aria-orientation=\"horizontal\"></div> <!></div>"), Qr = {
 	hash: "svelte-rc9auj",
-	code: ".worn-tabs-shell.svelte-rc9auj {display:flex;max-inline-size:100%;min-inline-size:0;margin-block-end:16px;}.worn-tabs.svelte-rc9auj {display:flex;flex:1 1 auto;max-inline-size:100%;min-inline-size:0;gap:0;border-block-end:2px solid var(--cockpit-border);overflow-x:auto;overscroll-behavior-inline:contain;scroll-padding-inline:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}.worn-tabs.svelte-rc9auj::-webkit-scrollbar {display:none;}.worn-tabs-control.svelte-rc9auj {flex:0 0 44px;inline-size:44px;min-block-size:44px;padding:0;border:0;border-block-end:2px solid var(--cockpit-border);font-family:var(--font-typewriter);font-size:28px;line-height:1;background:var(--cockpit-surface, transparent);color:var(--cockpit-link);cursor:pointer;touch-action:manipulation;transition:color 0.12s ease, background-color 0.12s ease;}.worn-tabs-control.svelte-rc9auj:hover:not(:disabled) {color:var(--cockpit-text);}.worn-tabs-control.svelte-rc9auj:disabled {color:var(--cockpit-text-muted);cursor:default;opacity:0.55;}.worn-tabs-control.svelte-rc9auj:focus-visible {position:relative;outline:2px dashed var(--cockpit-accent);outline-offset:-2px;}.worn-tab.svelte-rc9auj {box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;max-inline-size:24ch;min-inline-size:0;min-block-size:44px;padding:8px 16px;border:0;border-block-end:2px solid transparent;margin-block-end:-2px;font-family:var(--font-typewriter);font-size:13px;font-weight:560;white-space:nowrap;background:transparent;color:var(--cockpit-text-muted);cursor:pointer;touch-action:manipulation;transition:color 0.12s ease, border-color 0.12s ease;}.worn-tab-label.svelte-rc9auj {min-inline-size:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.worn-tab.svelte-rc9auj:hover {color:var(--cockpit-text);}.worn-tab[aria-selected='true'].svelte-rc9auj {color:var(--cockpit-link);border-block-end-color:var(--cockpit-accent);}.worn-tab.svelte-rc9auj:focus-visible {outline:2px dashed var(--cockpit-accent);outline-offset:-2px;}\n\n	@media (prefers-reduced-motion: reduce) {.worn-tab.svelte-rc9auj,\n		.worn-tabs-control.svelte-rc9auj {transition:none;}\n	}"
+	code: ".worn-tabs-shell.svelte-rc9auj {display:flex;max-inline-size:100%;min-inline-size:0;margin-block-end:16px;}.worn-tabs.svelte-rc9auj {display:flex;flex:1 1 auto;max-inline-size:100%;min-inline-size:0;gap:0;border-block-end:2px solid var(--cockpit-border);overflow-x:auto;overscroll-behavior-inline:contain;scroll-padding-inline:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}.worn-tabs.svelte-rc9auj::-webkit-scrollbar {display:none;}.worn-tabs-control.svelte-rc9auj {flex:0 0 44px;inline-size:44px;min-block-size:44px;padding:0;border:0;border-block-end:2px solid var(--cockpit-border);font-family:var(--font-typewriter);font-size:28px;line-height:1;background:var(--cockpit-surface, transparent);color:var(--cockpit-link);cursor:pointer;touch-action:manipulation;transition:color 0.12s ease, background-color 0.12s ease;}.worn-tabs-control.svelte-rc9auj:disabled {color:var(--cockpit-text-muted);cursor:default;opacity:0.55;}.worn-tabs-control.svelte-rc9auj:focus-visible {position:relative;}.worn-tabs-control.svelte-rc9auj:focus-visible,\n	.worn-tab.svelte-rc9auj:focus-visible {outline:2px dashed var(--worn-tabs-focus, currentColor);outline-offset:-2px;}.worn-tab.svelte-rc9auj {box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;max-inline-size:24ch;min-inline-size:0;min-block-size:44px;padding:8px 16px;border:0;border-block-end:2px solid transparent;margin-block-end:-2px;font-family:var(--font-typewriter);font-size:13px;font-weight:560;white-space:nowrap;background:transparent;color:var(--cockpit-text-muted);cursor:pointer;touch-action:manipulation;transition:color 0.12s ease, border-color 0.12s ease;}.worn-tab-label.svelte-rc9auj {min-inline-size:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.worn-tab[aria-selected='true'].svelte-rc9auj {color:var(--cockpit-link);border-block-end-color:var(--cockpit-accent);}\n\n	@media (hover: hover) and (pointer: fine) {.worn-tabs-control.svelte-rc9auj:hover:not(:disabled) {color:var(--cockpit-text);}.worn-tab.svelte-rc9auj:hover {color:var(--cockpit-text);}\n	}\n\n	@media (prefers-reduced-motion: reduce) {.worn-tab.svelte-rc9auj,\n		.worn-tabs-control.svelte-rc9auj {transition:none;}\n	}"
 };
 function $r(e, t) {
 	Ve(t, !0), Dr(e, Qr);
@@ -2202,7 +2202,7 @@ function $r(e, t) {
 		t.tabs.length && !t.tabs.some((e) => e.id === n()) && n(t.tabs[0].id);
 	}), cn(() => {
 		let e = n(), r = t.tabs.map((e) => `${e.id}\u0000${e.label}`).join(""), i = requestAnimationFrame(() => {
-			d(), e && r && g();
+			d(), e && r && _();
 		});
 		return () => cancelAnimationFrame(i);
 	}), cn(() => {
@@ -2228,10 +2228,18 @@ function $r(e, t) {
 	}
 	function p() {
 		u !== void 0 && cancelAnimationFrame(u), u = requestAnimationFrame(() => {
-			u = void 0, g();
+			u = void 0, _();
 		});
 	}
-	function m(e) {
+	function m(e, t) {
+		if (!(e.currentTarget instanceof HTMLButtonElement) || !e.currentTarget.disabled) return;
+		let n = i?.querySelector(`.worn-tabs-control[aria-label="${t}"]`);
+		queueMicrotask(() => {
+			if (!n?.isConnected || n.disabled) throw Error("Tabs overflow focus target is unavailable");
+			n.focus();
+		});
+	}
+	function h(e) {
 		if (!a) return;
 		let t = qr({
 			scrollLeft: a.scrollLeft,
@@ -2241,13 +2249,13 @@ function $r(e, t) {
 		});
 		Math.abs(t - a.scrollLeft) <= .5 || a.scrollTo({
 			left: t,
-			behavior: h() ? "auto" : "smooth"
+			behavior: g() ? "auto" : "smooth"
 		});
 	}
-	function h() {
+	function g() {
 		return typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	}
-	function g() {
+	function _() {
 		if (!a) return;
 		let e = a.querySelector("[role=\"tab\"][aria-selected=\"true\"]");
 		if (!e) return;
@@ -2263,7 +2271,7 @@ function $r(e, t) {
 			behavior: "auto"
 		});
 	}
-	function _(e) {
+	function v(e) {
 		if (!t.id) return {
 			tabId: e.tabId,
 			panelId: e.panelId
@@ -2274,40 +2282,44 @@ function $r(e, t) {
 			panelId: e.panelId || n.panelId
 		};
 	}
-	function v(e) {
+	function y(e) {
 		n(e), t.onchange?.(e);
 	}
-	function y(e, n) {
+	function b(e, n) {
 		let r = -1;
 		if (e.key === "ArrowRight" ? r = (n + 1) % t.tabs.length : e.key === "ArrowLeft" ? r = (n - 1 + t.tabs.length) % t.tabs.length : e.key === "Home" ? r = 0 : e.key === "End" && (r = t.tabs.length - 1), r < 0) return;
-		e.preventDefault(), v(t.tabs[r].id);
+		e.preventDefault(), y(t.tabs[r].id);
 		let i = e.currentTarget.parentElement?.children.item(r);
 		i instanceof HTMLElement && i.focus();
 	}
-	var b = Zr(), x = Zt(b), S = (e) => {
+	var x = Zr(), S = Zt(x), ee = (e) => {
 		var t = Jr();
-		hn(() => t.disabled = !$(s)), Zn("click", t, () => m(-1)), or(e, t);
+		hn(() => t.disabled = !$(s)), Zn("click", t, () => h(-1)), Zn("focusout", t, (e) => m(e, "Scroll to next tabs")), or(e, t);
 	};
-	_r(x, (e) => {
-		$(o) && e(S);
+	_r(S, (e) => {
+		$(o) && e(ee);
 	});
-	var C = Qt(x, 2);
+	var C = Qt(S, 2);
 	xr(C, 23, () => t.tabs, (e) => e.id, (e, t, r) => {
-		let i = /* @__PURE__ */ ft(() => _($(t)));
+		let i = /* @__PURE__ */ ft(() => v($(t)));
 		var a = Yr(), o = Zt(a), s = Zt(o, !0);
 		Ne(o), Ne(a), hn(() => {
 			jr(a, "id", $(i).tabId), jr(a, "aria-controls", $(i).panelId), jr(a, "aria-selected", $(t).id === n()), jr(a, "tabindex", $(t).id === n() ? 0 : -1), lr(s, $(t).label);
-		}), Zn("click", a, () => v($(t).id)), Zn("keydown", a, (e) => y(e, $(r))), or(e, a);
+		}), Zn("click", a, () => y($(t).id)), Zn("keydown", a, (e) => b(e, $(r))), or(e, a);
 	}), Ne(C), Ir(C, (e) => a = e, () => a);
-	var w = Qt(C, 2), ee = (e) => {
+	var te = Qt(C, 2), w = (e) => {
 		var t = Xr();
-		hn(() => t.disabled = !$(c)), Zn("click", t, () => m(1)), or(e, t);
+		hn(() => t.disabled = !$(c)), Zn("click", t, () => h(1)), Zn("focusout", t, (e) => m(e, "Scroll to previous tabs")), or(e, t);
 	};
-	_r(w, (e) => {
-		$(o) && e(ee);
-	}), Ne(b), Ir(b, (e) => i = e, () => i), hn(() => jr(C, "aria-label", r())), Xn("scroll", C, d), or(e, b), He();
+	_r(te, (e) => {
+		$(o) && e(w);
+	}), Ne(x), Ir(x, (e) => i = e, () => i), hn(() => jr(C, "aria-label", r())), Xn("scroll", C, d), or(e, x), He();
 }
-Qn(["click", "keydown"]);
+Qn([
+	"click",
+	"focusout",
+	"keydown"
+]);
 //#endregion
 //#region src/TabsElement.svelte
 function ei(e, t) {
