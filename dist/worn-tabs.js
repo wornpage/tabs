@@ -2170,7 +2170,15 @@ function Ur(e, t, n, r, i, a) {
 //#endregion
 //#region src/ids.ts
 function Wr(e) {
-	return e.trim().replace(/[^a-zA-Z0-9_-]+/gu, "-").replace(/^-+|-+$/gu, "") || "tab";
+	let t = [], n = !1, r = 0;
+	for (let i of e) {
+		let e = i.codePointAt(0) ?? -1;
+		if (e >= 65 && e <= 90 || e >= 97 && e <= 122 || e >= 48 && e <= 57 || i === "_" || i === "-") {
+			if (n = !1, i === "-" && t.length === 0) continue;
+			t.push(i), i !== "-" && (r = t.length);
+		} else t.length > 0 && !n && t.push("-"), n = !0;
+	}
+	return t.length = r, t.join("") || "tab";
 }
 function Gr(e, t) {
 	let n = Wr(t);
